@@ -7,12 +7,8 @@ namespace MyToDo_List
     public class AllTasks
     {
         string getDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
-        string fileName = "ListOfTask";
+        string fileName = "ListOfTask.txt";
         private List<ToDoTask> tasks = new List<ToDoTask>();
-
-
-
-       
         public void WriteToDoTaskToFile(ToDoTask toDoTask)
         {
             try
@@ -157,7 +153,8 @@ namespace MyToDo_List
                     var bookings = File.ReadAllLines(filePath);
                     foreach (var booking in bookings)
                     {
-                        tasks.Add(ToDoTask.ToBooking(booking));
+                        var item = ToDoTask.ToBooking(booking);
+                        tasks.Add(item);
                     }
                 }
                 else
